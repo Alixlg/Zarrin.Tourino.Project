@@ -1,0 +1,37 @@
+namespace Zarrin.Tourino.Core.Enums
+{
+    public enum IranianProvince
+    {
+        Tehran,
+        Alborz,
+        Isfahan,
+        Fars,
+        EastAzerbaijan,
+        WestAzerbaijan,
+        Ardabil,
+        Kerman,
+        Kermanshah,
+        Kurdistan,
+        Gilan,
+        Mazandaran,
+        Golestan,
+        Qazvin,
+        Qom,
+        Zanjan,
+        Semnan,
+        Yazd,
+        Markazi,
+        Ilam,
+        Lorestan,
+        Hamadan,
+        ChaharmahalAndBakhtiari,
+        KohgiluyehAndBoyerAhmad,
+        Khuzestan,
+        NorthKhorasan,
+        SouthKhorasan,
+        RazaviKhorasan,
+        Bushehr,
+        Hormozgan,
+        SistanAndBaluchestan
+    }
+}
