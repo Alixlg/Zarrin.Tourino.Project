@@ -12,31 +12,12 @@ namespace Zarrin.Tourino.Core.Entities
 {
     public class LogsModel : SqlBaseAttributes<int>, IObjectCreatedDate, IGuid
     {
-        public Guid Guid { get; set; }
+        public Guid Guid { get; set; } = System.Guid.NewGuid();
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
         public required DateTime LogTime { get; set; }
         public required LogType LogType { get; set; }
         public required string LogTitle { get; set; }
         public required string LogMessage { get; set; }
         public AccountBaseAttributes? Account { get; set; }
-        public LogsModel()
-        {
-            NewGuid();
-        }
-        public void NewGuid()
-        {
-            using var db = new DbData();
-            var logs = db.Logs;
-
-            while (true)
-            {
-                var newGuid = System.Guid.NewGuid();
-                if (!logs.Any(t => t.Guid == newGuid))
-                {
-                    Guid = newGuid;
-                    break;
-                }
-            }
-        }
     }
 }

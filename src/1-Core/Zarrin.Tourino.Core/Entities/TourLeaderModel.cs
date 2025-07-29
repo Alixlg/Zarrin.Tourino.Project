@@ -20,24 +20,5 @@ namespace Zarrin.Tourino.Core.Entities
         public List<TourModel>? InterestsTours { get; set; }
         public List<TourLeaderModel>? InterestsTourLeaders { get; set; }
         public Subscription Subscription { get; set; }
-        public TourLeaderModel()
-        {
-            NewGuid();
-        }
-        public override void NewGuid()
-        {
-            using var db = new DbData();
-            var tourLeaders = db.TourLeaders;
-
-            while (true)
-            {
-                var newGuid = System.Guid.NewGuid();
-                if (!tourLeaders.Any(t => t.Guid == newGuid))
-                {
-                    Guid = newGuid;
-                    break;
-                }
-            }
-        }
     }
 }

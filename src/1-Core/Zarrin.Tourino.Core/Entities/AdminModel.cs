@@ -12,24 +12,5 @@ namespace Zarrin.Tourino.Core.Entities
     public class AdminModel : AccountBaseAttributes
     {
         public AdminRole AdminRole { get; set; }
-        public AdminModel()
-        {
-            NewGuid();
-        }
-        public override void NewGuid()
-        {
-            using var db = new DbData();
-            var admins = db.Admins;
-
-            while (true)
-            {
-                var newGuid = System.Guid.NewGuid();
-                if (!admins.Any(t => t.Guid == newGuid))
-                {
-                    Guid = newGuid;
-                    break;
-                }
-            }
-        }
     }
 }

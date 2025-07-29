@@ -12,7 +12,7 @@ namespace Zarrin.Tourino.Core.Entities
 {
     public class TicketModel : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {
-        public Guid Guid { get; set; }
+        public Guid Guid { get; set; } = System.Guid.NewGuid();
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
         public List<AdminModel>? Responders { get; set; }
         public required DateTime OpenTicketTime { get; set; }
@@ -24,24 +24,5 @@ namespace Zarrin.Tourino.Core.Entities
         public TicketStatus TicketStatus { get; set; }
         public TicketPriority TicketPriority { get; set; }
         public List<TicketMessageModel>? TicketMessages { get; set; }
-        public TicketModel()
-        {
-            NewGuid();
-        }
-        public void NewGuid()
-        {
-            using var db = new DbData();
-            var tickets = db.Tickets;
-
-            while (true)
-            {
-                var newGuid = System.Guid.NewGuid();
-                if (!tickets.Any(t => t.Guid == newGuid))
-                {
-                    Guid = newGuid;
-                    break;
-                }
-            }
-        }
     }
 }

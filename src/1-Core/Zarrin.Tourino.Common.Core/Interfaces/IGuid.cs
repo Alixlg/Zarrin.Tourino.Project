@@ -8,6 +8,5 @@ namespace Zarrin.Tourino.Common.Core.Interfaces
     public interface IGuid
     {
         Guid Guid { get; set; }
-        void NewGuid();
     }
 }
