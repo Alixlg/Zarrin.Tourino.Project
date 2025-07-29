@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zarrin.Tourino.Core.DBContext;
 
@@ -10,9 +11,11 @@ using Zarrin.Tourino.Core.DBContext;
 namespace Zarrin.Tourino.Core.Migrations
 {
     [DbContext(typeof(DbData))]
-    partial class DbDataModelSnapshot : ModelSnapshot
+    [Migration("20250729071617_M125_7_29")]
+    partial class M125_7_29
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.7");

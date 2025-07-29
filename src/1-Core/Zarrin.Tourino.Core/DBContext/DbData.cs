@@ -15,6 +15,9 @@ namespace Zarrin.Tourino.Core.DBContext
         public DbSet<TourModel> Tours { get; set; }
         public DbSet<TourLeaderReport> TourLeaderReports { get; set; }
         public DbSet<TourLeaderVerification> TourLeaderVerificationList { get; set; }
+        public DbSet<LogsModel> Logs { get; set; }
+        public DbSet<TicketModel> Tickets { get; set; }
+        public DbSet<TicketMessageModel> TicketMessages { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var dbPath = "./DbFiles/DataBase.sqlite";

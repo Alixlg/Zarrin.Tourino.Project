@@ -10,6 +10,6 @@ namespace Zarrin.Tourino.Core.Entities
     public class ScoreModel : SqlBaseAttributes<int>
     {
         public required UserModel Voter { get; set; }
-        public Score AmountScore { get; set; }
+        public required Score AmountScore { get; set; }
     }
 }

@@ -5,27 +5,32 @@ using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
 using Zarrin.Tourino.Core.DBContext;
+using Zarrin.Tourino.Core.Entities.CommonEntities;
 
 namespace Zarrin.Tourino.Core.Entities
 {
-    public class TourModel : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
+    public class TourReport : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {
         public Guid Guid { get; set; }
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
-        public List<TourReport>? Reports { get; set; }
-        public TourModel()
+        public required TourModel TargetTour { get; set; }
+        public required AccountBaseAttributes Reporter { get; set; }
+        public required string ReporteTitle { get; set; }
+        public required string ReporteText { get; set; }
+        public string? AdminResponse { get; set; }
+        public TourReport()
         {
             NewGuid();
         }
         public void NewGuid()
         {
             using var db = new DbData();
-            var tours = db.Tours;
+            var reports = db.TourLeaderReports;
 
             while (true)
             {
                 var newGuid = System.Guid.NewGuid();
-                if (!tours.Any(t => t.Guid == newGuid))
+                if (!reports.Any(t => t.Guid == newGuid))
                 {
                     Guid = newGuid;
                     break;

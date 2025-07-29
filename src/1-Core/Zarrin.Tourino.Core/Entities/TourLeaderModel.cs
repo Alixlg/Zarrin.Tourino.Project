@@ -9,19 +9,17 @@ using Zarrin.Tourino.Core.Enums;
 
 namespace Zarrin.Tourino.Core.Entities
 {
-    public class TourLeaderModel : AccountBaseAttributes
+    public class TourLeaderModel : TourLeaderBaseAttributes
     {
-        public required List<ActivityArea> ActivityArea { get; set; }
-        public required List<TourType> ActivityTours { get; set; }
-        public required string Adress { get; set; }
-        public TourLeaderAccountLevel LeaderAccountLevel { get; set; }
-        public ExperienceLevel ExperienceLevel { get; set; }
         public double AverageScores { get; set; }
         public string? UserCommentsKey { get; set; } //NoSql
         public List<TourLeaderReport>? Reports { get; set; }
         public List<ScoreModel>? AllTourLeaderScores { get; set; }
         public List<TourLeaderHonors>? TourLeaderHonors { get; set; }
         public List<TourModel>? Tours { get; set; }
+        public List<TourModel>? InterestsTours { get; set; }
+        public List<TourLeaderModel>? InterestsTourLeaders { get; set; }
+        public Subscription Subscription { get; set; }
         public TourLeaderModel()
         {
             NewGuid();

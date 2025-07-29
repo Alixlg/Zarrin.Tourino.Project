@@ -14,11 +14,17 @@ namespace Zarrin.Tourino.Core.Entities.CommonEntities
         public required DateTime DateOfSingup { get; set; }
         public required bool IsVisible { get; set; }
         public required string UserName { get; set; }
+        public required string Email { get; set; }
+        public required string PassWord { get; set; } 
+        public required string Token { get; set; }
         public required string FullName { get; set; }
+        public required string Ip { get; set; }
         public required ulong PhoneNumber { get; set; }
         public required AccountStatus Status { get; set; }
         public AccountGender Gender { get; set; } = AccountGender.Unknown;
         public string? ProfileImageForeignKey { get; set; } //NoSql
+        public List<LogsModel>? Logs { get; set; }
+        public List<TicketModel>? Tickets { get; set; }
         public ulong NationalCode { get; set; }
         public int Age { get; set; }
         public DateOnly DateOfBirth { get; set; }

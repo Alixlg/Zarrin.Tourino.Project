@@ -17,6 +17,7 @@ namespace Zarrin.Tourino.Core.Entities
         public required AccountBaseAttributes Reporter { get; set; }
         public required string ReporteTitle { get; set; }
         public required string ReporteText { get; set; }
+        public string? AdminResponse { get; set; }
         public TourLeaderReport()
         {
             NewGuid();
