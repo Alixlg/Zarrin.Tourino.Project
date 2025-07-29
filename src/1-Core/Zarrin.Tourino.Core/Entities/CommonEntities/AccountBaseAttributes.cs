@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
 using Zarrin.Tourino.Core.Enums;
+using Zarrin.Tourino.Core.Interfaces;
 
 namespace Zarrin.Tourino.Core.Entities.CommonEntities
 {
-    public abstract class AccountBaseAttributes : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
+    public abstract class AccountBaseAttributes : SqlBaseAttributes<int>, IObjectCreatedDate, IAccountBaseAttributes
     {
         public Guid Guid { get; set; } = System.Guid.NewGuid();
         public required DateTime DateOfSingup { get; set; }
@@ -29,6 +30,5 @@ namespace Zarrin.Tourino.Core.Entities.CommonEntities
         public int Age { get; set; }
         public DateOnly DateOfBirth { get; set; }
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
-        public virtual void NewGuid() { }
     }
 }
