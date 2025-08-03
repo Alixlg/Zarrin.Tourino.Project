@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Zarrin.Tourino.Common.Core.Interfaces;
-using Zarrin.Tourino.Core.DBContext;
+using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 using Zarrin.Tourino.Core.Enums;
 
 namespace Zarrin.Tourino.Core.Entities
 {
-    public class AdminModel : AccountBaseAttributes
+    public class Score : SqlBaseAttributes<int>
     {
-        public AdminRole AdminRole { get; set; }
+        public required AccountBaseAttributes Voter { get; set; }
+        public required Enums.Score AmountScore { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace Zarrin.Tourino.Core.Enums
 {
-    public enum TicketType
+    public enum SupportTicketType
     {
         TechnicalUnit,
         ManagementUnit,

@@ -1,8 +1,8 @@
 using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities;
+using Zarrin.Tourino.Core.Entities.AccountsEntities;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 using Zarrin.Tourino.Core.Enums;
-using Zarrin.Tourino.Core.Interfaces;
 
 internal class Program
 {
@@ -25,7 +25,7 @@ internal class Program
 
         app.UseHttpsRedirection();
 
-        Test(new TourLeaderModel
+        Test(new TourLeaderAccount
         {
             DateOfSingup = DateTime.UtcNow,
             IsVisible = true,
@@ -45,7 +45,7 @@ internal class Program
 
         app.MapGet("api/v1/entitie/test", () =>
         {
-            return Test(new TourLeaderModel
+            return Test(new TourLeaderAccount
             {
                 DateOfSingup = DateTime.UtcNow,
                 IsVisible = true,
@@ -65,14 +65,14 @@ internal class Program
 
         app.Run();
     }
-    public static TicketModel Test(TourLeaderModel t)
+    public static SupportTicket Test(TourLeaderAccount t)
     {
-        var ticket = new TicketModel
+        var ticket = new SupportTicket
         {
             OpenTicketTime = DateTime.UtcNow,
             LastTicketUpdateTime = DateTime.UtcNow,
             Referrers = [t],
-            TicketType = TicketType.ManagementUnit,
+            TicketType = SupportTicketType.ManagementUnit,
             TicketTitle = "Login Error",
             TicketFirstMessage = "User cannot log in using email."
         };
