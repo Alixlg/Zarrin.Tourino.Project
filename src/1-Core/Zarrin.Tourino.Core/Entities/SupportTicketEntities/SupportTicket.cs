@@ -9,7 +9,7 @@ using Zarrin.Tourino.Core.Entities.AccountsEntities;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 using Zarrin.Tourino.Core.Enums;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.SupportTicketEntities
 {
     public class SupportTicket : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {

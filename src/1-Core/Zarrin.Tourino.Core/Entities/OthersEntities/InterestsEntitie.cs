@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class InterestsEntitie : SqlBaseAttributes<int>, IGuid
     {

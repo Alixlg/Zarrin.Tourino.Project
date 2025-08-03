@@ -7,7 +7,7 @@ using Zarrin.Tourino.Common.Core.Interfaces;
 using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class TourLeaderVerification : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {

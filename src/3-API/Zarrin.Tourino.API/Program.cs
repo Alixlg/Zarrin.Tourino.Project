@@ -2,6 +2,7 @@ using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities;
 using Zarrin.Tourino.Core.Entities.AccountsEntities;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
+using Zarrin.Tourino.Core.Entities.SupportTicketEntities;
 using Zarrin.Tourino.Core.Enums;
 
 internal class Program

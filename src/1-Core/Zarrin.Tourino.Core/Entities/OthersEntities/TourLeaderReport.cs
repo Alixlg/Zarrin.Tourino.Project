@@ -8,7 +8,7 @@ using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities.AccountsEntities;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class TourLeaderReport : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {

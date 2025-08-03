@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
+using Zarrin.Tourino.Core.Entities.OthersEntities;
+using Zarrin.Tourino.Core.Entities.SupportTicketEntities;
 using Zarrin.Tourino.Core.Enums;
 
 namespace Zarrin.Tourino.Core.Entities.CommonEntities

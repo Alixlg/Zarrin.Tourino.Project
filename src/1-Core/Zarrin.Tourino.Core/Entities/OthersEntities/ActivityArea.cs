@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Core.Enums;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class ActivityArea : SqlBaseAttributes<int>
     {

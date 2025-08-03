@@ -8,7 +8,7 @@ using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 using Zarrin.Tourino.Core.Enums;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class ActivitieLogs : SqlBaseAttributes<int>, IObjectCreatedDate, IGuid
     {

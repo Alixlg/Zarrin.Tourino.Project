@@ -12,5 +12,6 @@ namespace Zarrin.Tourino.Core.Entities.AccountsEntities
     public class AdminAccount : AccountBaseAttributes
     {
         public AdminRole AdminRole { get; set; }
+        public List<AdminPermission>? AdminPermissions { get; set; }
     }
 }

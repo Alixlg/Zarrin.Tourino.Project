@@ -72,6 +72,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     DateOfBirth = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     Discriminator = table.Column<string>(type: "TEXT", maxLength: 21, nullable: false),
                     AdminRole = table.Column<int>(type: "INTEGER", nullable: true),
+                    AdminPermissions = table.Column<string>(type: "TEXT", nullable: true),
                     SupportTicketId = table.Column<int>(type: "INTEGER", nullable: true),
                     ActivityTours = table.Column<string>(type: "TEXT", nullable: true),
                     Adress = table.Column<string>(type: "TEXT", nullable: true),
@@ -83,6 +84,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     TourLeaderAccount_Subscription = table.Column<int>(type: "INTEGER", nullable: true),
                     IdentityDocumentsKeys = table.Column<string>(type: "TEXT", nullable: true),
                     SocialMediaLinks = table.Column<string>(type: "TEXT", nullable: true),
+                    UserHonors = table.Column<string>(type: "TEXT", nullable: true),
                     Subscription = table.Column<int>(type: "INTEGER", nullable: true),
                     AboutMe = table.Column<string>(type: "TEXT", nullable: true)
                 },
@@ -237,7 +239,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     Guid = table.Column<Guid>(type: "TEXT", nullable: false),
                     MessageOwnerId = table.Column<int>(type: "INTEGER", nullable: false),
                     MessageSendTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Messages = table.Column<string>(type: "TEXT", nullable: false),
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
                     SupportTicketId = table.Column<int>(type: "INTEGER", nullable: true),
                     SupportTicketMessageId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -329,6 +331,40 @@ namespace Zarrin.Tourino.Core.Migrations
                         principalTable: "AccountBaseAttributes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TourComment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Guid = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CommentOwnerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MessageSendTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Comment = table.Column<string>(type: "TEXT", nullable: false),
+                    TourCommentId = table.Column<int>(type: "INTEGER", nullable: true),
+                    TourId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TourComment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TourComment_AccountBaseAttributes_CommentOwnerId",
+                        column: x => x.CommentOwnerId,
+                        principalTable: "AccountBaseAttributes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TourComment_TourComment_TourCommentId",
+                        column: x => x.TourCommentId,
+                        principalTable: "TourComment",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_TourComment_Tours_TourId",
+                        column: x => x.TourId,
+                        principalTable: "Tours",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -474,6 +510,21 @@ namespace Zarrin.Tourino.Core.Migrations
                 column: "SupportTicketMessageId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TourComment_CommentOwnerId",
+                table: "TourComment",
+                column: "CommentOwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TourComment_TourCommentId",
+                table: "TourComment",
+                column: "TourCommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TourComment_TourId",
+                table: "TourComment",
+                column: "TourId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TourLeaderReports_ReporterId",
                 table: "TourLeaderReports",
                 column: "ReporterId");
@@ -529,6 +580,9 @@ namespace Zarrin.Tourino.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "SupportTicketMessages");
+
+            migrationBuilder.DropTable(
+                name: "TourComment");
 
             migrationBuilder.DropTable(
                 name: "TourLeaderReports");

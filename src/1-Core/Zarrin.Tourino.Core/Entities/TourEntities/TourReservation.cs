@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.TourEntities
 {
     public class TourReservation : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {

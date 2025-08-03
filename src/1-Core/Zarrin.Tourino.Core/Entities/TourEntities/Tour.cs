@@ -8,7 +8,7 @@ using Zarrin.Tourino.Core.DBContext;
 using Zarrin.Tourino.Core.Entities.AccountsEntities;
 using Zarrin.Tourino.Core.Enums;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.TourEntities
 {
     public class Tour : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {
@@ -37,5 +37,6 @@ namespace Zarrin.Tourino.Core.Entities
         public required string TourCountry { get; set; } //Type In Prop Avaz Mishavad va In Movaghati Ast
         public List<TourReport>? Reports { get; set; }
         public List<string>? Attributes { get; set; }
+        public List<TourComment>? Comments { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using Zarrin.Tourino.Common.Core.Entities;
 using Zarrin.Tourino.Common.Core.Interfaces;
 using Zarrin.Tourino.Core.Entities.CommonEntities;
 
-namespace Zarrin.Tourino.Core.Entities
+namespace Zarrin.Tourino.Core.Entities.TourEntities
 {
     public class TourReport : SqlBaseAttributes<int>, IGuid, IObjectCreatedDate
     {

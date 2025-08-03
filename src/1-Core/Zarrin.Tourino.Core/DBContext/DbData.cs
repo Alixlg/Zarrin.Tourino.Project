@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Zarrin.Tourino.Core.Entities;
 using Zarrin.Tourino.Core.Entities.AccountsEntities;
+using Zarrin.Tourino.Core.Entities.OthersEntities;
+using Zarrin.Tourino.Core.Entities.SupportTicketEntities;
+using Zarrin.Tourino.Core.Entities.TourEntities;
 
 namespace Zarrin.Tourino.Core.DBContext
 {
