@@ -10,7 +10,7 @@ using Zarrin.Tourino.Core.Enums;
 
 namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
-    public class ActivitieLogs : SqlBaseAttributes<int>, IObjectCreatedDate, IGuid
+    public class ActivityLogs : SqlBaseAttributes<int>, IObjectCreatedDate, IGuid
     {
         public Guid Guid { get; set; } = System.Guid.NewGuid();
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;

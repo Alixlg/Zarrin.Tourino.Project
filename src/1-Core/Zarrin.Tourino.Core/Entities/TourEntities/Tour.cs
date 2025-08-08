@@ -16,9 +16,9 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
         public required bool IsVisible { get; set; }
         public required bool IsPrivate { get; set; }
-        public required string PreviewImageForeignKey { get; set; } //NoSql
+        public required int PreviewImageId { get; set; } //NoSql
+        public List<int>? ImageIds { get; set; } //NoSql
         public bool IsVip { get; set; }
-        public List<string>? ImagesForeignKeys { get; set; } //NoSql
         public required string TourName { get; set; }
         public required string TourDescription { get; set; }
         public required TourLeaderAccount TourOwner { get; set; }
@@ -32,9 +32,9 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
         public required ulong PricePerPerson { get; set; }
         public required int MinAge { get; set; }
         public required int MaxAge { get; set; }
-        public required string Origin { get; set; } //Type In Prop Avaz Mishavad va In Movaghati Ast
-        public required string Destination { get; set; } //Type In Prop Avaz Mishavad va In Movaghati Ast
-        public required string TourCountry { get; set; } //Type In Prop Avaz Mishavad va In Movaghati Ast
+        public required string Origin { get; set; }
+        public required string Destination { get; set; }
+        public required string TourCountry { get; set; }
         public List<TourReport>? Reports { get; set; }
         public List<string>? Attributes { get; set; }
         public List<TourComment>? Comments { get; set; }

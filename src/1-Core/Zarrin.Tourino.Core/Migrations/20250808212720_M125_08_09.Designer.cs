@@ -11,8 +11,8 @@ using Zarrin.Tourino.Core.DBContext;
 namespace Zarrin.Tourino.Core.Migrations
 {
     [DbContext(typeof(DbData))]
-    [Migration("20250803201355_M125_08_03")]
-    partial class M125_08_03
+    [Migration("20250808212720_M125_08_09")]
+    partial class M125_08_09
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,9 @@ namespace Zarrin.Tourino.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AccountRole")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER");
 
@@ -83,12 +86,12 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Property<Guid>("Guid")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Ip")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<bool>("IsVisible")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastIp")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<ulong>("NationalCode")
                         .HasColumnType("INTEGER");
@@ -100,14 +103,11 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Property<ulong>("PhoneNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ProfileImageForeignKey")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ProfileImageId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -122,7 +122,34 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivitieLogs", b =>
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityArea", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Province")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("TourLeaderAccountId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourLeaderAccountId");
+
+                    b.ToTable("ActivityArea");
+                });
+
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityLogs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -155,44 +182,14 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.ToTable("ActivitieLogs");
                 });
 
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityArea", b =>
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.InterestsEntitie<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("District")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Province")
+                    b.Property<int>("EntitieId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<int?>("TourLeaderAccountId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TourLeaderAccountId");
-
-                    b.ToTable("ActivityArea");
-                });
-
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.InterestsEntitie", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("EntitieGuid")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("TEXT");
 
                     b.Property<int?>("TourLeaderAccountId")
                         .HasColumnType("INTEGER");
@@ -216,7 +213,7 @@ namespace Zarrin.Tourino.Core.Migrations
 
                     b.HasIndex("UserAccountId1");
 
-                    b.ToTable("InterestsEntitie");
+                    b.ToTable("InterestsEntitie<int>");
                 });
 
             modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.Score", b =>
@@ -287,7 +284,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Property<Guid>("Guid")
                         .HasColumnType("TEXT");
 
-                    b.PrimitiveCollection<string>("IdentityDocumentsKeys")
+                    b.PrimitiveCollection<string>("IdentityDocumentsIds")
                         .HasColumnType("TEXT");
 
                     b.Property<bool?>("IsApproved")
@@ -377,6 +374,31 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.ToTable("SupportTicketMessages");
                 });
 
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.TourEntities.CommentLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LikeOwnerGuid")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("LikeOwnerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("TourCommentId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LikeOwnerId");
+
+                    b.HasIndex("TourCommentId");
+
+                    b.ToTable("CommentLike");
+                });
+
             modelBuilder.Entity("Zarrin.Tourino.Core.Entities.TourEntities.Tour", b =>
                 {
                     b.Property<int>("Id")
@@ -400,7 +422,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Property<Guid>("Guid")
                         .HasColumnType("TEXT");
 
-                    b.PrimitiveCollection<string>("ImagesForeignKeys")
+                    b.PrimitiveCollection<string>("ImageIds")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsPrivate")
@@ -422,9 +444,8 @@ namespace Zarrin.Tourino.Core.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PreviewImageForeignKey")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PreviewImageId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<ulong>("PricePerPerson")
                         .HasColumnType("INTEGER");
@@ -608,8 +629,8 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.PrimitiveCollection<string>("TourLeaderHonors")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserCommentsKey")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("UserCommentsId")
+                        .HasColumnType("INTEGER");
 
                     b.ToTable("AccountBaseAttributes", t =>
                         {
@@ -627,7 +648,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Property<string>("AboutMe")
                         .HasColumnType("TEXT");
 
-                    b.PrimitiveCollection<string>("IdentityDocumentsKeys")
+                    b.PrimitiveCollection<string>("IdentityDocumentsIds")
                         .HasColumnType("TEXT");
 
                     b.PrimitiveCollection<string>("SocialMediaLinks")
@@ -672,7 +693,14 @@ namespace Zarrin.Tourino.Core.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivitieLogs", b =>
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityArea", b =>
+                {
+                    b.HasOne("Zarrin.Tourino.Core.Entities.AccountsEntities.TourLeaderAccount", null)
+                        .WithMany("ActivityArea")
+                        .HasForeignKey("TourLeaderAccountId");
+                });
+
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityLogs", b =>
                 {
                     b.HasOne("Zarrin.Tourino.Core.Entities.CommonEntities.AccountBaseAttributes", "Account")
                         .WithMany("Logs")
@@ -681,14 +709,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.ActivityArea", b =>
-                {
-                    b.HasOne("Zarrin.Tourino.Core.Entities.AccountsEntities.TourLeaderAccount", null)
-                        .WithMany("ActivityArea")
-                        .HasForeignKey("TourLeaderAccountId");
-                });
-
-            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.InterestsEntitie", b =>
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.OthersEntities.InterestsEntitie<int>", b =>
                 {
                     b.HasOne("Zarrin.Tourino.Core.Entities.AccountsEntities.TourLeaderAccount", null)
                         .WithMany("InterestsTourLeaders")
@@ -758,6 +779,21 @@ namespace Zarrin.Tourino.Core.Migrations
                         .HasForeignKey("SupportTicketMessageId");
 
                     b.Navigation("MessageOwner");
+                });
+
+            modelBuilder.Entity("Zarrin.Tourino.Core.Entities.TourEntities.CommentLike", b =>
+                {
+                    b.HasOne("Zarrin.Tourino.Core.Entities.CommonEntities.AccountBaseAttributes", "LikeOwner")
+                        .WithMany()
+                        .HasForeignKey("LikeOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Zarrin.Tourino.Core.Entities.TourEntities.TourComment", null)
+                        .WithMany("CommentLikes")
+                        .HasForeignKey("TourCommentId");
+
+                    b.Navigation("LikeOwner");
                 });
 
             modelBuilder.Entity("Zarrin.Tourino.Core.Entities.TourEntities.Tour", b =>
@@ -851,6 +887,8 @@ namespace Zarrin.Tourino.Core.Migrations
 
             modelBuilder.Entity("Zarrin.Tourino.Core.Entities.TourEntities.TourComment", b =>
                 {
+                    b.Navigation("CommentLikes");
+
                     b.Navigation("SubComments");
                 });
 

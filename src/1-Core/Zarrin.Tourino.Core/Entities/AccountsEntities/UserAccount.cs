@@ -7,10 +7,10 @@ namespace Zarrin.Tourino.Core.Entities.AccountsEntities
 {
     public class UserAccount : AccountBaseAttributes
     {
-        public List<string>? IdentityDocumentsKeys { get; set; } //NoSql
+        public List<int>? IdentityDocumentsIds { get; set; } //NoSql
         public List<string>? SocialMediaLinks { get; set; }
-        public List<InterestsEntitie>? InterestsTours { get; set; }
-        public List<InterestsEntitie>? InterestsTourLeaders { get; set; }
+        public List<InterestsEntitie<int>>? InterestsTours { get; set; }
+        public List<InterestsEntitie<int>>? InterestsTourLeaders { get; set; }
         public List<Tour>? Trips { get; set; }
         public List<UserHonor>? UserHonors { get; set; }
         public Subscription Subscription { get; set; }

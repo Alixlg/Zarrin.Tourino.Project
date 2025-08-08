@@ -15,7 +15,7 @@ namespace Zarrin.Tourino.Core.DBContext
         public DbSet<Tour> Tours { get; set; }
         public DbSet<TourLeaderReport> TourLeaderReports { get; set; }
         public DbSet<TourLeaderVerification> TourLeaderVerificationList { get; set; }
-        public DbSet<ActivitieLogs> ActivitieLogs { get; set; }
+        public DbSet<ActivityLogs> ActivitieLogs { get; set; }
         public DbSet<SupportTicket> SupportTickets { get; set; }
         public DbSet<SupportTicketMessage> SupportTicketMessages { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

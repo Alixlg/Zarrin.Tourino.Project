@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Zarrin.Tourino.Core.Migrations
 {
     /// <inheritdoc />
-    public partial class M125_08_03 : Migration
+    public partial class M125_08_09 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -41,7 +41,7 @@ namespace Zarrin.Tourino.Core.Migrations
                     TourLeaderGuid = table.Column<Guid>(type: "TEXT", nullable: false),
                     IsApproved = table.Column<bool>(type: "INTEGER", nullable: true),
                     RejectionReason = table.Column<string>(type: "TEXT", nullable: true),
-                    IdentityDocumentsKeys = table.Column<string>(type: "TEXT", nullable: true)
+                    IdentityDocumentsIds = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,16 +57,16 @@ namespace Zarrin.Tourino.Core.Migrations
                     Guid = table.Column<Guid>(type: "TEXT", nullable: false),
                     DateOfSingup = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsVisible = table.Column<bool>(type: "INTEGER", nullable: false),
+                    AccountRole = table.Column<int>(type: "INTEGER", nullable: false),
                     PhoneNumber = table.Column<ulong>(type: "INTEGER", nullable: false),
                     FullName = table.Column<string>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", nullable: false),
                     PassWord = table.Column<string>(type: "TEXT", nullable: false),
-                    Ip = table.Column<string>(type: "TEXT", nullable: false),
-                    Token = table.Column<string>(type: "TEXT", nullable: true),
+                    LastIp = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     Gender = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProfileImageForeignKey = table.Column<string>(type: "TEXT", nullable: true),
+                    ProfileImageId = table.Column<int>(type: "INTEGER", nullable: false),
                     NationalCode = table.Column<ulong>(type: "INTEGER", nullable: false),
                     Age = table.Column<int>(type: "INTEGER", nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "TEXT", nullable: false),
@@ -79,10 +79,10 @@ namespace Zarrin.Tourino.Core.Migrations
                     LeaderAccountLevel = table.Column<int>(type: "INTEGER", nullable: true),
                     ExperienceLevel = table.Column<int>(type: "INTEGER", nullable: true),
                     AverageScores = table.Column<double>(type: "REAL", nullable: true),
-                    UserCommentsKey = table.Column<string>(type: "TEXT", nullable: true),
+                    UserCommentsId = table.Column<int>(type: "INTEGER", nullable: true),
                     TourLeaderHonors = table.Column<string>(type: "TEXT", nullable: true),
                     TourLeaderAccount_Subscription = table.Column<int>(type: "INTEGER", nullable: true),
-                    IdentityDocumentsKeys = table.Column<string>(type: "TEXT", nullable: true),
+                    IdentityDocumentsIds = table.Column<string>(type: "TEXT", nullable: true),
                     SocialMediaLinks = table.Column<string>(type: "TEXT", nullable: true),
                     UserHonors = table.Column<string>(type: "TEXT", nullable: true),
                     Subscription = table.Column<int>(type: "INTEGER", nullable: true),
@@ -167,13 +167,12 @@ namespace Zarrin.Tourino.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InterestsEntitie",
+                name: "InterestsEntitie<int>",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Guid = table.Column<Guid>(type: "TEXT", nullable: false),
-                    EntitieGuid = table.Column<Guid>(type: "TEXT", nullable: false),
+                    EntitieId = table.Column<int>(type: "INTEGER", nullable: false),
                     TourLeaderAccountId = table.Column<int>(type: "INTEGER", nullable: true),
                     TourLeaderAccountId1 = table.Column<int>(type: "INTEGER", nullable: true),
                     UserAccountId = table.Column<int>(type: "INTEGER", nullable: true),
@@ -181,24 +180,24 @@ namespace Zarrin.Tourino.Core.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InterestsEntitie", x => x.Id);
+                    table.PrimaryKey("PK_InterestsEntitie<int>", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InterestsEntitie_AccountBaseAttributes_TourLeaderAccountId",
+                        name: "FK_InterestsEntitie<int>_AccountBaseAttributes_TourLeaderAccountId",
                         column: x => x.TourLeaderAccountId,
                         principalTable: "AccountBaseAttributes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InterestsEntitie_AccountBaseAttributes_TourLeaderAccountId1",
+                        name: "FK_InterestsEntitie<int>_AccountBaseAttributes_TourLeaderAccountId1",
                         column: x => x.TourLeaderAccountId1,
                         principalTable: "AccountBaseAttributes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InterestsEntitie_AccountBaseAttributes_UserAccountId",
+                        name: "FK_InterestsEntitie<int>_AccountBaseAttributes_UserAccountId",
                         column: x => x.UserAccountId,
                         principalTable: "AccountBaseAttributes",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_InterestsEntitie_AccountBaseAttributes_UserAccountId1",
+                        name: "FK_InterestsEntitie<int>_AccountBaseAttributes_UserAccountId1",
                         column: x => x.UserAccountId1,
                         principalTable: "AccountBaseAttributes",
                         principalColumn: "Id");
@@ -303,9 +302,9 @@ namespace Zarrin.Tourino.Core.Migrations
                     Guid = table.Column<Guid>(type: "TEXT", nullable: false),
                     IsVisible = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsPrivate = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PreviewImageForeignKey = table.Column<string>(type: "TEXT", nullable: false),
+                    PreviewImageId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ImageIds = table.Column<string>(type: "TEXT", nullable: true),
                     IsVip = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ImagesForeignKeys = table.Column<string>(type: "TEXT", nullable: true),
                     TourName = table.Column<string>(type: "TEXT", nullable: false),
                     TourDescription = table.Column<string>(type: "TEXT", nullable: false),
                     TourOwnerId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -444,6 +443,32 @@ namespace Zarrin.Tourino.Core.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CommentLike",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    LikeOwnerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    LikeOwnerGuid = table.Column<string>(type: "TEXT", nullable: false),
+                    TourCommentId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentLike", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CommentLike_AccountBaseAttributes_LikeOwnerId",
+                        column: x => x.LikeOwnerId,
+                        principalTable: "AccountBaseAttributes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CommentLike_TourComment_TourCommentId",
+                        column: x => x.TourCommentId,
+                        principalTable: "TourComment",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AccountBaseAttributes_SupportTicketId",
                 table: "AccountBaseAttributes",
@@ -465,23 +490,33 @@ namespace Zarrin.Tourino.Core.Migrations
                 column: "TourLeaderAccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestsEntitie_TourLeaderAccountId",
-                table: "InterestsEntitie",
+                name: "IX_CommentLike_LikeOwnerId",
+                table: "CommentLike",
+                column: "LikeOwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommentLike_TourCommentId",
+                table: "CommentLike",
+                column: "TourCommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InterestsEntitie<int>_TourLeaderAccountId",
+                table: "InterestsEntitie<int>",
                 column: "TourLeaderAccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestsEntitie_TourLeaderAccountId1",
-                table: "InterestsEntitie",
+                name: "IX_InterestsEntitie<int>_TourLeaderAccountId1",
+                table: "InterestsEntitie<int>",
                 column: "TourLeaderAccountId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestsEntitie_UserAccountId",
-                table: "InterestsEntitie",
+                name: "IX_InterestsEntitie<int>_UserAccountId",
+                table: "InterestsEntitie<int>",
                 column: "UserAccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestsEntitie_UserAccountId1",
-                table: "InterestsEntitie",
+                name: "IX_InterestsEntitie<int>_UserAccountId1",
+                table: "InterestsEntitie<int>",
                 column: "UserAccountId1");
 
             migrationBuilder.CreateIndex(
@@ -573,16 +608,16 @@ namespace Zarrin.Tourino.Core.Migrations
                 name: "ActivityArea");
 
             migrationBuilder.DropTable(
-                name: "InterestsEntitie");
+                name: "CommentLike");
+
+            migrationBuilder.DropTable(
+                name: "InterestsEntitie<int>");
 
             migrationBuilder.DropTable(
                 name: "Score");
 
             migrationBuilder.DropTable(
                 name: "SupportTicketMessages");
-
-            migrationBuilder.DropTable(
-                name: "TourComment");
 
             migrationBuilder.DropTable(
                 name: "TourLeaderReports");
@@ -598,6 +633,9 @@ namespace Zarrin.Tourino.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "TourUserAccount");
+
+            migrationBuilder.DropTable(
+                name: "TourComment");
 
             migrationBuilder.DropTable(
                 name: "Tours");

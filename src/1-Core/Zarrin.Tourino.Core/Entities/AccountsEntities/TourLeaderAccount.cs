@@ -19,13 +19,13 @@ namespace Zarrin.Tourino.Core.Entities.AccountsEntities
         public TourLeaderAccountLevel LeaderAccountLevel { get; set; }
         public ExperienceLevel ExperienceLevel { get; set; }
         public double AverageScores { get; set; }
-        public string? UserCommentsKey { get; set; } //NoSql
+        public int UserCommentsId { get; set; } //NoSql
         public List<TourLeaderReport>? Reports { get; set; }
         public List<OthersEntities.Score>? AllTourLeaderScores { get; set; }
         public List<TourLeaderHonors>? TourLeaderHonors { get; set; }
         public List<Tour>? Tours { get; set; }
-        public List<InterestsEntitie>? InterestsTours { get; set; }
-        public List<InterestsEntitie>? InterestsTourLeaders { get; set; }
+        public List<InterestsEntitie<int>>? InterestsTours { get; set; }
+        public List<InterestsEntitie<int>>? InterestsTourLeaders { get; set; }
         public Subscription Subscription { get; set; }
     }
 }

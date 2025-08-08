@@ -14,6 +14,7 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
         public required AccountBaseAttributes CommentOwner { get; set; }
         public required DateTime MessageSendTime { get; set; }
         public required string Comment { get; set; }
+        public List<CommentLike>? CommentLikes { get; set; }
         public List<TourComment>? SubComments { get; set; }
     }
 }

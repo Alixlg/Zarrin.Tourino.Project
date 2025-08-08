@@ -16,6 +16,6 @@ namespace Zarrin.Tourino.Core.Entities.OthersEntities
         public required Guid TourLeaderGuid { get; set; }
         public bool? IsApproved { get; set; }
         public string? RejectionReason { get; set; }
-        public List<string>? IdentityDocumentsKeys { get; set; } //NoSql
+        public List<int>? IdentityDocumentsIds { get; set; } //NoSql
     }
 }

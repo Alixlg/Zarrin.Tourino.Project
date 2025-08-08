@@ -7,9 +7,8 @@ using Zarrin.Tourino.Common.Core.Interfaces;
 
 namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
-    public class InterestsEntitie : SqlBaseAttributes<int>, IGuid
+    public class InterestsEntitie<T> : SqlBaseAttributes<int> where T : struct
     {
-        public Guid Guid { get; set; } = System.Guid.NewGuid();
-        public Guid EntitieGuid { get; set; }
+        public T EntitieId { get; set; }
     }
 }
