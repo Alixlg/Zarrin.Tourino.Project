@@ -9,6 +9,7 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
 {
     public class CommentLike : SqlBaseAttributes<int>
     {
+        public int LikeOwnerId { get; set; }
         public required AccountBaseAttributes LikeOwner { get; set; }
         public required string LikeOwnerGuid { get; set; }
     }

@@ -14,8 +14,9 @@ namespace Zarrin.Tourino.Core.Entities.OthersEntities
     {
         public Guid Guid { get; set; } = System.Guid.NewGuid();
         public DateTime ObjectCreatedDateTime { get; } = DateTime.Now;
-        public int TourLeadefrId { get; set; }
+        public int TourLeaderId { get; set; }
         public required TourLeaderAccount TourLeader { get; set; }
+        public int ReporterId { get; set; }
         public required AccountBaseAttributes Reporter { get; set; }
         public required string ReporteTitle { get; set; }
         public required string ReporteText { get; set; }

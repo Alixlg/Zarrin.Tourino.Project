@@ -21,6 +21,7 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
         public bool IsVip { get; set; }
         public required string TourName { get; set; }
         public required string TourDescription { get; set; }
+        public int TourOwnerId { get; set; }
         public required TourLeaderAccount TourOwner { get; set; }
         public required int TourMaximumMembers { get; set; }
         public List<UserAccount>? TourUserMembers { get; set; }

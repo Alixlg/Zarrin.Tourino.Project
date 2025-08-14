@@ -10,6 +10,7 @@ namespace Zarrin.Tourino.Core.Entities.OthersEntities
 {
     public class Score : SqlBaseAttributes<int>
     {
+        public int VoterId { get; set; }
         public required AccountBaseAttributes Voter { get; set; }
         public required Enums.Score AmountScore { get; set; }
     }

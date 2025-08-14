@@ -18,6 +18,7 @@ namespace Zarrin.Tourino.Core.Entities.OthersEntities
         public required LogType LogType { get; set; }
         public required string LogTitle { get; set; }
         public required string LogMessage { get; set; }
+        public int AccountId { get; set; }
         public AccountBaseAttributes? Account { get; set; }
     }
 }

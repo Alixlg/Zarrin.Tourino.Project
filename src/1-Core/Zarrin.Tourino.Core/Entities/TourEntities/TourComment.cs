@@ -11,6 +11,7 @@ namespace Zarrin.Tourino.Core.Entities.TourEntities
     public class TourComment : SqlBaseAttributes<int>, IGuid
     {
         public Guid Guid { get; set; } = System.Guid.NewGuid();
+        public int CommentOwnerId { get; set; }
         public required AccountBaseAttributes CommentOwner { get; set; }
         public required DateTime MessageSendTime { get; set; }
         public required string Comment { get; set; }
